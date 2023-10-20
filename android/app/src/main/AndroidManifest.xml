@@ -1,6 +1,7 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <application
-        android:label="loginpage"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.pcps.flutterdemo.demo">
+   <application
+        android:label="demo"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

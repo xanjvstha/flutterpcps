@@ -1,23 +1,26 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
-import 'package:loginpage/model/newsapi.dart';
-import 'package:loginpage/static.dart';
+import '../model/newsapi.dart';
+import '../static.dart';
+class GetApi {
 
-class GetApi{
-  static Future<NewsApi?> getnewsdata() async {
+  static Future<Newsapi?>? getnewsdata() async {
     try{
-      String apikey = "a25a0c0b883c4f389ff5c23da0f9dfea";
-      var url = Uri.http(StaticValue.baseurl, '/v2/everything',
-          {"domains":"wsj.com", "apiKey":apikey});
+      //http request
+      // api call
+      var url = Uri.https(StaticValue.baseurl, '/v2/everything',
+          {"domains":"wsj.com", "apiKey":StaticValue.apikey });
+      // Await the http get response, then decode the json-formatted response.
       var response = await http.get(url);
       var jsonResponse = convert.jsonDecode(response.body);
-      NewsApi data = NewsApi.fromJson(jsonResponse);
+      Newsapi data = Newsapi.fromJson(jsonResponse);
       return data;
     }
     catch(e){
+      //error
       return null;
     }
-    return null;
   }
+
 }
